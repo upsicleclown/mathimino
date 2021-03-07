@@ -39,10 +39,11 @@ class Coin {
          _y = 0;
         return true;
       }
-    } else {
+    } 
+    else {
       _y += _speed*t;
-      return false;
     }
+    return false;
 
   }
 
