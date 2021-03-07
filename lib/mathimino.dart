@@ -5,6 +5,7 @@ import 'package:flame/components/component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flame/util.dart';
 import 'package:mathimino/backg.dart';
+import 'package:mathimino/foreg.dart';
 import 'package:mathimino/coin.dart';
 
 class Mathimino extends BaseGame {
@@ -15,7 +16,9 @@ class Mathimino extends BaseGame {
   final int numOfHorizTiles = 7; //total number of horizontal tiles
   final int rowNumTiles = 5; // number of tiles that a row takes up
   BackgroundLayer bLayer;
+  ForegroundLayer fLayer;
   Coin coin;
+  int winCount = 4;
 
   Mathimino() {
     _eqBlock = SpriteComponent.square(64, 'redBrick.png');
@@ -28,8 +31,10 @@ class Mathimino extends BaseGame {
     //if (size != null){
     bLayer =
         BackgroundLayer('backGround.png', 'leftTower.png', 'rightTower.png');
-    coin = Coin();
-    this.add(coin.component);
+    fLayer = ForegroundLayer('barrel.png', 'BlueBlockRow.png',
+        'GreenBlockRow.png', 'PurpleBlockRow.png', 'RedBlockRow.png');
+    //coin = Coin();
+    //this.add(coin.component);
   }
   void resize(Size size) {
     super.resize(size);
@@ -38,8 +43,10 @@ class Mathimino extends BaseGame {
   }
 
   void update(double t) {}
+
   void render(Canvas canvas) {
     bLayer.drawBackground(canvas, size);
-    coin.draw(canvas);
+    fLayer.drawForeground(canvas, size, winCount);
+    //coin.draw(canvas);
   }
 }
