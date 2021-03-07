@@ -11,7 +11,7 @@ class Coin {
   final double _height = 24;
   double _x, _y;
   final String _fileName = 'coin.png';
-  double _topRowsY = 200, _speed = 50;
+  double _topRowsY = 200, _speed = 100;
   double screenWidth = 500;
 
   Coin({double x = 500/2, double y = 0}) {
@@ -34,7 +34,7 @@ class Coin {
     _topRowsY = top;
   }
   bool update(double t, double correctX, double bWidth) {
-    if (_y >= _topRowsY) {
+    if (_y + _height >= _topRowsY) {
       if (_x >= correctX && _x <= bWidth){
          _y = 0;
         return true;

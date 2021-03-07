@@ -42,8 +42,8 @@ class Mathimino extends BaseGame {
   }
 
   void update(double t) {
-    coin.setTopRowY(900);
-    coin.update(t, 300, 400);
+    coin.setTopRowY(fLayer.topY);
+    coin.update(t, 0, this.size.width);
   }
 
   void render(Canvas canvas) {

@@ -9,6 +9,7 @@ class ForegroundLayer {
   Row blueR, greenR, purpleR, redR;
   List<Row> rows;
   int rowCount = 0;
+  double topY = 0;
   ForegroundLayer(String barrel, String blueFile, String greenFile,
       String purpleFile, String redFile) {
     this.barrel = Sprite(barrel);
@@ -50,6 +51,7 @@ class ForegroundLayer {
           Rect.fromLTWH(colWidth + colWidth / 2, size.height - colWidth * 4,
               colWidth * 4, colWidth));
     }*/
+    topY = size.height - colWidth * (counter + 1);
     barrel.renderRect(
         canvas,
         Rect.fromLTWH(colWidth * 2 - colWidth / 2,
