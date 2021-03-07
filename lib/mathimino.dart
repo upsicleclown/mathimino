@@ -33,8 +33,7 @@ class Mathimino extends BaseGame {
         BackgroundLayer('backGround.png', 'leftTower.png', 'rightTower.png');
     fLayer = ForegroundLayer('barrel.png', 'BlueBlockRow.png',
         'GreenBlockRow.png', 'PurpleBlockRow.png', 'RedBlockRow.png');
-    //coin = Coin();
-    //this.add(coin.component);
+    coin = Coin();
   }
   void resize(Size size) {
     super.resize(size);
@@ -42,11 +41,13 @@ class Mathimino extends BaseGame {
     row1.height = origRowHeight / origRowWidth * row1.width;
   }
 
-  void update(double t) {}
+  void update(double t) {
+    coin.update(t);
+  }
 
   void render(Canvas canvas) {
     bLayer.drawBackground(canvas, size);
     fLayer.drawForeground(canvas, size, winCount);
-    //coin.draw(canvas);
+    coin.render(canvas);
   }
 }

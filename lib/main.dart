@@ -35,6 +35,7 @@ class GameRoute extends StatelessWidget {
     return Container();
   }
 }
+
 /*
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -61,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 */
-class StartRoute extends StatelessWidget{
+class StartRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,24 +70,24 @@ class StartRoute extends StatelessWidget{
         title: Text('Mathimino'),
       ),
       body: Center(
-        child: ElevatedButton(
-          child: Text('Start'),
-          onPressed: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => PlayGameScreen()),
-            );
-          },
-        )
-        // child: ElevatedButton() button 'Initiative'
-      ),
+          child: ElevatedButton(
+        child: Text('Start'),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PlayGameScreen()),
+          );
+        },
+      )
+          // child: ElevatedButton() button 'Initiative'
+          ),
     );
   }
 }
 
-class PlayGameScreen extends StatelessWidget{
+class PlayGameScreen extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       //appBar: AppBar(
       //  title: Text('Back to main'),
@@ -100,10 +101,9 @@ class PlayGameScreen extends StatelessWidget{
                 Navigator.pop(context);
               },
             ),
-
             new ElevatedButton(
               child: Text('Play!'),
-              onPressed: (){
+              onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => GameScreen()),
@@ -118,19 +118,21 @@ class PlayGameScreen extends StatelessWidget{
   }
 }
 
-class GameScreen extends StatefulWidget{
+class GameScreen extends StatefulWidget {
   @override
   _GameScreenState createState() => _GameScreenState();
 }
-class _GameScreenState extends State<GameScreen>{
+
+class _GameScreenState extends State<GameScreen> {
   Mathimino mathimino;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     mathimino = Mathimino();
   }
-  Widget build(BuildContext context){
+
+  Widget build(BuildContext context) {
     return Scaffold(
       body: mathimino.widget,
       appBar: AppBar(
@@ -139,9 +141,9 @@ class _GameScreenState extends State<GameScreen>{
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: new FloatingActionButton(
         child: Icon(Icons.pause_circle_filled),
-        onPressed: (){
+        onPressed: () {
           Navigator.push(
-            context, 
+            context,
             MaterialPageRoute(builder: (context) => PauseScreen()),
           );
         },
@@ -150,27 +152,25 @@ class _GameScreenState extends State<GameScreen>{
   }
 }
 
-
-class PauseScreen extends StatelessWidget{
+class PauseScreen extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Game Paused'),
       ),
       body: Center(
         child: new Column(
-          children: <Widget> [
+          children: <Widget>[
             new ElevatedButton(
               child: Text('Resume'),
-              onPressed: (){
+              onPressed: () {
                 Navigator.pop(context);
               },
             ),
-
             new ElevatedButton(
               child: Text('Main menu'),
-              onPressed: (){
+              onPressed: () {
                 Navigator.pop(context);
                 Navigator.pop(context);
                 Navigator.pop(context);
