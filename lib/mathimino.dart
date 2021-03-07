@@ -14,7 +14,7 @@ class Mathimino extends BaseGame {
   Mathimino() {
     _eqBlock = SpriteComponent.square(64, 'redBrick.png');
     this.add(_eqBlock);
-    row1 = SpriteComponent.rectangle(164, 32, 'PurpleBlockRow.png');
+    row1 = SpriteComponent.rectangle(origRowWidth.toDouble(), origRowHeight.toDouble(), 'PurpleBlockRow.png');
     row1.resize(size);
     row1.x = 30;
     row1.y = 500;
