@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: "Mathimino"),
+      home: StartRoute(),
+      //home: MyHomePage(title: "Mathimino"),
     );
   }
 }
@@ -56,6 +57,117 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: mathimino.widget,
+    );
+  }
+}
+
+class StartRoute extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Mathimino'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: Text('Start'),
+          onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PlayGameScreen()),
+            );
+          },
+        )
+        // child: ElevatedButton() button 'Initiative'
+      ),
+    );
+  }
+}
+
+class PlayGameScreen extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      //appBar: AppBar(
+      //  title: Text('Back to main'),
+      //),
+      body: Center(
+        child: new Column(
+          children: <Widget>[
+            new ElevatedButton(
+              child: Text('Back to main menu'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+
+            new ElevatedButton(
+              child: Text('Play!'),
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GameScreen()),
+                );
+              },
+            ),
+          ],
+          //new ElevatedButton(),
+        ),
+      ),
+    );
+  }
+}
+
+class GameScreen extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Go!'),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButton: new FloatingActionButton(
+        child: Icon(Icons.pause_circle_filled),
+        onPressed: (){
+          Navigator.push(
+            context, 
+            MaterialPageRoute(builder: (context) => PauseScreen()),
+          );
+        },
+      ),
+
+    );
+  }
+}
+
+class PauseScreen extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Game Paused'),
+      ),
+      body: Center(
+        child: new Column(
+          children: <Widget> [
+            new ElevatedButton(
+              child: Text('Resume'),
+              onPressed: (){
+                Navigator.pop(context);
+              },
+            ),
+
+            new ElevatedButton(
+              child: Text('Main menu'),
+              onPressed: (){
+                Navigator.pop(context);
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
