@@ -12,8 +12,10 @@ class Coin {
   final double _height = 24;
   double _x, _y;
   final String _fileName = 'coin.png';
+  double _topRowsY = 200, _speed = 100;
+  double screenWidth = 500;
 
-  Coin({double x = 100, double y = 0}) {
+  Coin({double x = 500/2, double y = 0}) {
     _x = x;
     _y = y;
     sprite = Sprite(_fileName);
@@ -22,13 +24,28 @@ class Coin {
   void render(Canvas c) {
     sprite.renderRect(c, Rect.fromLTWH(_x, _y, _width, _height));
   }
-
-  void update(double t) {
-    if (_y > 200) {
-      _y = 0;
-    } else {
-      ++_y;
+  void reset(){
+    _x = screenWidth/2 - _width;
+    _y = 0;
+  }
+  void setSpeed(double speed){
+    _speed = speed;
+  }
+  void setTopRowY(double top){
+    _topRowsY = top;
+  }
+  bool update(double t, double correctX, double bWidth) {
+    if (_y + _height >= _topRowsY) {
+      if (_x >= correctX && _x <= bWidth){
+         _y = 0;
+        return true;
+      }
+    } 
+    else {
+      _y += _speed*t;
     }
+    return false;
+
   }
 
   void onTapDown(TapDownDetails d) {
