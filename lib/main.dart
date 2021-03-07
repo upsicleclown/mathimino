@@ -35,7 +35,7 @@ class GameRoute extends StatelessWidget {
     return Container();
   }
 }
-
+/*
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
+*/
 class StartRoute extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -118,10 +118,21 @@ class PlayGameScreen extends StatelessWidget{
   }
 }
 
-class GameScreen extends StatelessWidget{
+class GameScreen extends StatefulWidget{
   @override
+  _GameScreenState createState() => _GameScreenState();
+}
+class _GameScreenState extends State<GameScreen>{
+  Mathimino mathimino;
+
+  @override
+  void initState(){
+    super.initState();
+    mathimino = Mathimino();
+  }
   Widget build(BuildContext context){
     return Scaffold(
+      body: mathimino.widget,
       appBar: AppBar(
         title: Text('Go!'),
       ),
@@ -135,10 +146,10 @@ class GameScreen extends StatelessWidget{
           );
         },
       ),
-
     );
   }
 }
+
 
 class PauseScreen extends StatelessWidget{
   @override
