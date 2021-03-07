@@ -4,6 +4,7 @@ import 'package:flame/animation.dart';
 import 'package:flame/components/animation_component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flame/spritesheet.dart';
+import 'package:flutter/cupertino.dart';
 
 class Coin {
   Sprite sprite;
@@ -27,6 +28,14 @@ class Coin {
       _y = 0;
     } else {
       ++_y;
+    }
+  }
+
+  void onTapDown(TapDownDetails d) {
+    if (d.globalPosition.dx < _x && _x > _width) {
+      _x -= _width;
+    } else if (d.globalPosition.dy > _x + _width) {
+      _x += _width;
     }
   }
 

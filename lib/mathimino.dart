@@ -4,6 +4,7 @@ import 'package:flame/game.dart';
 import 'package:flame/components/component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flame/util.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:mathimino/backg.dart';
 import 'package:mathimino/coin.dart';
 
@@ -30,6 +31,11 @@ class Mathimino extends BaseGame {
         BackgroundLayer('backGround.png', 'leftTower.png', 'rightTower.png');
     coin = Coin();
   }
+
+  void onTapDown(TapDownDetails d) {
+    coin.onTapDown(d);
+  }
+
   void resize(Size size) {
     super.resize(size);
     row1.width = size.width * rowNumTiles / numOfHorizTiles;
@@ -39,6 +45,7 @@ class Mathimino extends BaseGame {
   void update(double t) {
     coin.update(t);
   }
+
   void render(Canvas canvas) {
     bLayer.drawBackground(canvas, size);
     coin.render(canvas);

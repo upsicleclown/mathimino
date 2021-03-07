@@ -1,6 +1,8 @@
 import 'package:flame/game.dart';
 import 'package:flame/util.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'mathimino.dart';
 import 'package:flame/components/component.dart';
 
@@ -133,6 +135,11 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   Widget build(BuildContext context) {
+    Util flameUtil = Util();
+    TapGestureRecognizer tapper = TapGestureRecognizer();
+    tapper.onTapDown = mathimino.onTapDown;
+    // ignore: deprecated_member_use
+    flameUtil.addGestureRecognizer(tapper);
     return Scaffold(
       body: mathimino.widget,
       appBar: AppBar(
